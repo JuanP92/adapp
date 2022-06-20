@@ -19,8 +19,9 @@ return new class extends Migration
             $table->timestamps();
 
             //foraneas
-            $table->foreign('id')->references('id')->on('partido');
             $table->foreignId('ganador')->constrained('equipo');
+            $table->foreignId('partido_id')->constrained('partido');
+
         });
     }
 

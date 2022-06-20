@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('partido', function (Blueprint $table) {
+        Schema::create('partido_individual', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
             $table->time('hora');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partido');
+        Schema::dropIfExists('partido_individual');
     }
 };

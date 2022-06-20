@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('partido', function (Blueprint $table) {
+        Schema::create('resultado_individual', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha');
-            $table->time('hora');
+            $table->string('marcador', 50);
             $table->timestamps();
 
             //foraneas
-            $table->foreignId('actividad_id')->constrained('actividad_semestre');
-            $table->foreignId('arbitro')->constrained('users');
+            $table->foreignId('ganador')->constrained('users');
+            $table->foreignId('partido_id')->constrained('partido');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partido');
+        Schema::dropIfExists('resultado_individual');
     }
 };
