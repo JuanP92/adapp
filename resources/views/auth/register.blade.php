@@ -19,6 +19,13 @@
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
+            <!-- codigo -->
+            <div class="mt-4">
+                <x-label for="codigo" :value="__('Código')" />
+
+                <x-input id="codigo" class="block mt-1 w-full" type="text" name="codigo" :value="old('codigo')" required />
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
@@ -45,6 +52,31 @@
                                 name="password_confirmation" required />
             </div>
 
+            <!-- Tipo de Documento -->
+            <div class="mt-4">
+                <x-label for="tipo_doc" :value="__('Tipo de Documento')" />
+
+                <select id="tipo_doc" name="tipo_doc" class="block mt-1 w-full">
+                    <option value="cc" selected>Cedula de Ciudadania</option>
+                    <option value="ti">Tarjeta de Identidad</option>
+                    <option value="ce">Cedula Extranjera</option>
+                </select>
+            </div>
+
+            <!-- Numero de documento -->
+            <div class="mt-4">
+                <x-label for="documento" :value="__('Documento')" />
+
+                <x-input id="documento" class="block mt-1 w-full" type="text" name="documento" :value="old('documento')" required />
+            </div>
+
+            <!-- Numero de documento -->
+            <div class="mt-4">
+                <x-label for="celular" :value="__('# de Celular')" />
+
+                <x-input id="celular" class="block mt-1 w-full" type="text" name="celular" :value="old('celular')" required />
+            </div>
+            
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
