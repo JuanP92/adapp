@@ -12,6 +12,12 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+
+            <!-- Rol -->
+            <div>
+                <x-input id="rol_id" type="hidden" name="rol_id" value="2" required />
+            </div>
+
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
