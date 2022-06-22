@@ -26,3 +26,4 @@ Route::controller(ActividadController::class)->group(function(){
 });
 
 
+
