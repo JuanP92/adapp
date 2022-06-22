@@ -10,7 +10,19 @@ Route::controller(HomeController::class)->group(function(){
 });
 
 Route::controller(ActividadController::class)->group(function(){
+
     Route::get('actividades', 'index')->name('actividades');
+
+    Route::get('actividades/crear', 'create')->name('crear-actividad');
+
+    Route::post('actividades/registrar', 'registrar')->name('registrar-actividad');
+
+    Route::get('actividades/modificar/{actividad}', 'modificar')->name('modificar-actividad');
+
+    Route::put('actividades/update/{actividad}', 'update')->name('update-actividad');
+
+    Route::delete('actividades/delete/{actividad}', 'delete')->name('delete-actividad');
+    
 });
 
 
