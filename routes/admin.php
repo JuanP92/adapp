@@ -24,6 +24,3 @@ Route::controller(ActividadController::class)->group(function(){
     Route::delete('actividades/delete/{actividad}', 'delete')->name('delete-actividad');
     
 });
-
-
-
