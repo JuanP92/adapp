@@ -22,7 +22,7 @@ $heads = [
 
     {{-- Minimal --}}
     <x-adminlte-button class="my-1" label="Crear" theme="primary"
-        onClick="window.location.href='{{ route('crear-actividad') }}'"/>
+        onClick="window.location.href='{{ route('crear-convocatoria') }}'"/>
 
     {{-- Card --}}
     <x-adminlte-card theme="danger" theme-mode="outline">
@@ -38,7 +38,7 @@ $heads = [
                     <tr>
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->actividad->nombre }}</td>
-                        <td>{{ $row->semestre }}</td>
+                        <td>{{ $row->semestre }} SEMESTRE</td>
                         <td>{{ $row->cupos }}</td>
                         <td>
                             <form action="{{ route('modificar-convocatoria', $row) }}" method="get">
