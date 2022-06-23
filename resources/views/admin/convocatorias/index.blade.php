@@ -37,7 +37,7 @@ $heads = [
                 @foreach($convocatorias as $row)
                     <tr>
                         <td>{{ $row->id }}</td>
-                        <td>{{ $row->nombre }}</td>
+                        <td>{{ $row->actividad->nombre }}</td>
                         <td>{{ $row->semestre }}</td>
                         <td>{{ $row->cupos }}</td>
                         <td>

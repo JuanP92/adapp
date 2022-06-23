@@ -10,4 +10,9 @@ class Convocatoria extends Model
     use HasFactory;
 
     protected $table = 'actividad_semestre';
+
+    public function actividad(){
+
+        return $this->belongsTo(Actividad::class);
+    }
 }
