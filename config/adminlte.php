@@ -244,7 +244,7 @@ return [
                 ],
                 [
                     'text'      => 'Convocatorias',
-                    'url'     => '#',
+                    'route'     => 'convocatorias',
                     'icon'      => 'fas fa-fw fa-regular fa-circle'
                 ]
             ],
