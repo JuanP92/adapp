@@ -5,7 +5,7 @@
 @section('title', 'Convocatoria')
 
 @section('content_header')
-    <h1>Crear Convocatoria</h1>
+    <h1>Modificar Convocatoria</h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
     {{-- Card --}}
     <x-adminlte-card theme="danger" theme-mode="outline">
         
-        <form class="container" id="formulario" action="" method="POST">
+        <form class="container" id="formulario" action="{{ route('update-convocatoria', $convocatoria) }}" method="post">
             @csrf()
             @method('put')
 
@@ -37,7 +37,7 @@
             
             {{-- Periodo de la convocatoria --}}
             <x-adminlte-date-range name="date_range" placeholder="{{ $convocatoria->fecha_ini }} - {{ $convocatoria->fecha_fin }}"
-            label="Periodo de la convocatoria" autocomplete="off">
+                label="Periodo de la convocatoria" autocomplete="off">
                 <x-slot name="prependSlot">
                     <div class="input-group-text bg-gradient-danger">
                         <i class="far fa-lg fa-calendar-alt"></i>

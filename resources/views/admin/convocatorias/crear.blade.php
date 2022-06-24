@@ -21,7 +21,7 @@
             @csrf()
 
             {{-- Actividad --}}
-            <x-adminlte-select2 name="actividad_id" label="Actvidad"
+            <x-adminlte-select2 name="actividad_id" label="Actividad"
                 igroup-size="lg">
             <x-slot name="prependSlot">
                 <div class="input-group-text bg-gradient-danger">
@@ -45,7 +45,7 @@
             @push('js')<script>$(() => $("#date_range").val(''))</script>@endpush
 
             {{-- Semestre --}}
-            <x-adminlte-select2 name="semestre" label="Actvidad"
+            <x-adminlte-select2 name="semestre" label="Semestre"
                 igroup-size="lg">
             <x-slot name="prependSlot">
                 <div class="input-group-text bg-gradient-danger">

@@ -21,7 +21,7 @@ class ConvocatoriaFactory extends Factory
             'fecha_ini' => $this->faker->date(),
             'fecha_fin' => $this->faker->date(),
             'actividad_id' => $this->faker->numberBetween(3,8),
-            'formato_id' => $this->faker->numberBetween(1,2)
+            'cupos' => $this->faker->numberBetween(1,10)
         ];
     }
 }

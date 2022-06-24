@@ -47,9 +47,11 @@ class ConvocatoriaController extends Controller
     public function update(Convocatoria $convocatoria, Request $request){
         $convocatoria->semestre = $request->semestre;
         $convocatoria->cupos = $request->cupos;
-        $fechas = explode(' - ',$request->date_range);
-        $convocatoria->fecha_ini = Date::create($fechas[0]);
-        $convocatoria->fecha_fin = Date::create($fechas[1]);
+        if(!empty($request->date_range)){
+            $fechas = explode(' - ',$request->date_range);
+            $convocatoria->fecha_ini = Date::create($fechas[0]);
+            $convocatoria->fecha_fin = Date::create($fechas[1]);
+        }
         $convocatoria->actividad_id = $request->actividad_id;
 
         $convocatoria->update();

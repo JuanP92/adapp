@@ -59,16 +59,18 @@ $heads = [
                     </tr>
 
                     {{-- Detalles --}}
-                    <x-adminlte-modal id="detallesModal{{ $row->id }}" title="{{ $row->nombre }}" theme="red"
+                    <x-adminlte-modal id="detallesModal{{ $row->id }}" title="{{ $row->actividad->nombre }}" theme="red"
                         icon="fas fa-bolt" size='lg'>
                             {{-- Descripcion --}}
                             <x-adminlte-card title="Descripción" theme="red" theme-mode="outline"
                              header-class="text-uppercase rounded-bottom border-danger">
-                                <p>{{ $row->descripcion }}</p>
+                                <p>{{ $row->actividad->descripcion }}</p>
                                 <x-adminlte-callout theme="danger" title="Detalles">
                                     <ul>
-                                        <li>{{ ($row->tipo_id==1)?'Actividad deportiva':'Actividad recreativa' }}</li>
-                                        <li>{{ ($row->por_equipos==1)?'En equipos':'Individuales' }}</li>
+                                        <li>{{ ($row->actividad->tipo_id==1)?'Actividad deportiva':'Actividad recreativa' }}</li>
+                                        <li>{{ ($row->actividad->por_equipos==1)?'En equipos':'Individuales' }}</li>
+                                        <li>Periodo de la convocatoria: {{ $row->fecha_ini }} - {{ $row->fecha_fin }}</li>
+                                        <li>Cupos: {{ $row->cupos }}</li>
                                     </ul>
                                 </x-adminlte-callout>
                             </x-adminlte-card>

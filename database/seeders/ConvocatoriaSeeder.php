@@ -16,6 +16,6 @@ class ConvocatoriaSeeder extends Seeder
     public function run()
     {
         //
-        Convocatoria::factory(10)->create();
+        Convocatoria::factory(20)->create();
     }
 }
