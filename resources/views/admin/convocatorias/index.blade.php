@@ -41,7 +41,7 @@ $heads = [
                         <td>{{ $row->semestre }} SEMESTRE</td>
                         <td>{{ $row->cupos }}</td>
                         <td>
-                            <form action="{{ route('modificar-convocatoria', $row) }}" method="get">
+                            <form action="{{ route('modificar-convocatoria', $row) }}" method="post">
                                 @csrf()
 
                                 <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">

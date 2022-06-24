@@ -37,4 +37,30 @@ class ConvocatoriaController extends Controller
 
         return redirect()->route('convocatorias');
     }
+
+    public function modificar(Convocatoria $convocatoria){
+        $actividades = Actividad::all();
+
+        return view('admin.convocatorias.modificar')->with(compact('convocatoria'))->with(compact('actividades'));
+    }
+
+    public function update(Convocatoria $convocatoria, Request $request){
+        $convocatoria->semestre = $request->semestre;
+        $convocatoria->cupos = $request->cupos;
+        $fechas = explode(' - ',$request->date_range);
+        $convocatoria->fecha_ini = Date::create($fechas[0]);
+        $convocatoria->fecha_fin = Date::create($fechas[1]);
+        $convocatoria->actividad_id = $request->actividad_id;
+
+        $convocatoria->update();
+
+        return redirect()->route('convocatorias');
+    }
+
+
+    public function delete(Convocatoria $convocatoria){
+        $convocatoria->delete();
+        return redirect()->route('convocatorias');
+    }
+
 }

@@ -39,7 +39,7 @@ $heads = [
                         <td>{{ $row->nombre }}</td>
                         <td>{{ $row->descripcion }}</td>
                         <td>
-                            <form action="{{ route('modificar-actividad', $row) }}" method="get">
+                            <form action="{{ route('modificar-actividad', $row) }}" method="post">
                                 @csrf()
 
                                 <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
