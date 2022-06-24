@@ -3,7 +3,8 @@
 $heads = [
     'ID',
     'Nombre',
-    ['label' => 'descripción', 'width' => 40],
+    'Semestre',
+    'Cupos',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 
@@ -11,35 +12,36 @@ $heads = [
 
 @extends('adminlte::page')
 
-@section('title', 'Actividades')
+@section('title', 'Convocatorias')
 
 @section('content_header')
-    <h1>Actividades</h1>
+    <h1>Convocatorias</h1>
 @stop
 
 @section('content')
 
     {{-- Minimal --}}
     <x-adminlte-button class="my-1" label="Crear" theme="primary"
-        onClick="window.location.href='{{ route('crear-actividad') }}'"/>
+        onClick="window.location.href='{{ route('crear-convocatoria') }}'"/>
 
     {{-- Card --}}
     <x-adminlte-card theme="danger" theme-mode="outline">
         {{-- Minimal example / fill data using the component slot --}}
         <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark"
             bordered with-buttons>
-            @if (@empty($actividades))
+            @if (@isset($convocatorias->data))
                 <tr>
-                    <td>No hay actividades registradas</td>
+                    <td colspan="5">No hay convocatorias registradas</td>
                 </tr>
             @else
-                @foreach($actividades as $row)
+                @foreach($convocatorias as $row)
                     <tr>
                         <td>{{ $row->id }}</td>
-                        <td>{{ $row->nombre }}</td>
-                        <td>{{ $row->descripcion }}</td>
+                        <td>{{ $row->actividad->nombre }}</td>
+                        <td>{{ $row->semestre }} SEMESTRE</td>
+                        <td>{{ $row->cupos }}</td>
                         <td>
-                            <form action="{{ route('modificar-actividad', $row) }}" method="post">
+                            <form action="{{ route('modificar-convocatoria', $row) }}" method="post">
                                 @csrf()
 
                                 <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
@@ -57,16 +59,18 @@ $heads = [
                     </tr>
 
                     {{-- Detalles --}}
-                    <x-adminlte-modal id="detallesModal{{ $row->id }}" title="{{ $row->nombre }}" theme="red"
+                    <x-adminlte-modal id="detallesModal{{ $row->id }}" title="{{ $row->actividad->nombre }}" theme="red"
                         icon="fas fa-bolt" size='lg'>
                             {{-- Descripcion --}}
                             <x-adminlte-card title="Descripción" theme="red" theme-mode="outline"
                              header-class="text-uppercase rounded-bottom border-danger">
-                                <p>{{ $row->descripcion }}</p>
+                                <p>{{ $row->actividad->descripcion }}</p>
                                 <x-adminlte-callout theme="danger" title="Detalles">
                                     <ul>
-                                        <li>{{ ($row->tipo_id==1)?'Actividad deportiva':'Actividad recreativa' }}</li>
-                                        <li>{{ ($row->por_equipos==1)?'En equipos':'Individuales' }}</li>
+                                        <li>{{ ($row->actividad->tipo_id==1)?'Actividad deportiva':'Actividad recreativa' }}</li>
+                                        <li>{{ ($row->actividad->por_equipos==1)?'En equipos':'Individuales' }}</li>
+                                        <li>Periodo de la convocatoria: {{ $row->fecha_ini }} - {{ $row->fecha_fin }}</li>
+                                        <li>Cupos: {{ $row->cupos }}</li>
                                     </ul>
                                 </x-adminlte-callout>
                             </x-adminlte-card>
@@ -75,9 +79,9 @@ $heads = [
                     {{-- Custom --}}
                     <x-adminlte-modal id="modalDelete{{ $row->id }}" title="¡Advertencia!" size="lg" theme="red"
                         icon="fas fa-bell" v-centered>
-                            <div>¿Esta seguro de que desea borrar la actividad <b>{{ $row->nombre }}</b>?</div>
+                            <div>¿Esta seguro de que desea borrar la convocatoria <b>{{ $row->nombre }}</b>?</div>
                             <x-slot name="footerSlot">
-                                <form action="{{ route('delete-actividad', $row) }}" method="post">
+                                <form action="{{ route('delete-convocatoria', $row) }}" method="post">
                                     @csrf()
                                     @method('delete')
 
