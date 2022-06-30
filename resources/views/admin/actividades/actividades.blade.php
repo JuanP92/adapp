@@ -4,7 +4,7 @@ $heads = [
     'ID',
     'Nombre',
     ['label' => 'descripción', 'width' => 40],
-    ['label' => 'Actions', 'no-export' => true, 'width' => 5],
+    ['label' => 'Actions', 'no-export' => true, 'width' => 15],
 ];
 
 @endphp
@@ -39,7 +39,7 @@ $heads = [
                         <td>{{ $row->nombre }}</td>
                         <td>{{ $row->descripcion }}</td>
                         <td>
-                            <form action="{{ route('modificar-actividad', $row) }}" method="post">
+                            <form class="d-inline" action="{{ route('modificar-actividad', $row) }}" method="post">
                                 @csrf()
 
                                 <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">

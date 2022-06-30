@@ -5,7 +5,7 @@ $heads = [
     'Nombre',
     'Semestre',
     'Cupos',
-    ['label' => 'Actions', 'no-export' => true, 'width' => 5],
+    ['label' => 'Actions', 'no-export' => true, 'width' => 15],
 ];
 
 @endphp
@@ -41,7 +41,7 @@ $heads = [
                         <td>{{ $row->semestre }} SEMESTRE</td>
                         <td>{{ $row->cupos }}</td>
                         <td>
-                            <form action="{{ route('modificar-convocatoria', $row) }}" method="post">
+                            <form class="d-inline" action="{{ route('modificar-convocatoria', $row) }}" method="post">
                                 @csrf()
 
                                 <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
